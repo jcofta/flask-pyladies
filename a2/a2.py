@@ -128,7 +128,7 @@ movies_list = [
 app = Flask(__name__)
 
 def mlist_gen(page, on_page):
-	return movies_list[(page-1)*on_page:(page*on_page)]
+	return movies_list[ (page-1)*on_page : (page*on_page) ]
 
 @app.route("/")
 @app.route("/<on_page>")
@@ -143,7 +143,7 @@ def index(on_page=3, page=1):
 	else:
 		prev = page-1
 
-	if mlist_gen(page+1,on_page) == None:
+	if mlist_gen(page+1,on_page) == [	]:
 		next = None
 	else:
 		next = page+1

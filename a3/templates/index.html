@@ -2,23 +2,28 @@
 <html> 
     <head> 
         <meta charset="UTF-8"> 
-        <title>Movies: {{on_page}}</title> 
+        <title>List of movies</title> 
     </head> 
 <body> 
 	<h1>Lista filmów</h1>
     {% if movies_list %}
-        <a href='{{url_for('index', page=prev, on_page=on_page)}}'>Wstecz</a>
-        {% if prev %}
-            <a href='{{url_for('index', page=prev, on_page=on_page)}}'>Wstecz</a>
+        <p>Przejdź do..</p>
+        {% if paginator.prev %}
+            <a href='{{url_for('index', page=paginator.first, on_page=on_page)}}'>Pierwsza</a>
+            <span> | </span>
+            <a href='{{url_for('index', page=paginator.prev, on_page=on_page)}}'>Poprzednia</a>
         {% endif %}
 
-        {% if prev and next%}
+        {% if paginator.prev and paginator.next%}
             <span> | </span>
         {% endif %}     
         
-        {% if next %}
-            <a href='{{url_for('index', page=next, on_page=on_page)}}'>Dalej</a>
+        {% if paginator.next %}
+            <a href='{{url_for('index', page=paginator.next, on_page=on_page)}}'>Następna</a>
+            <span> | </span>
+            <a href='{{url_for('index', page=paginator.last, on_page=on_page)}}'>Ostatnia</a>
         {% endif %}
+
     {% for movie in movies_list %}
     	<h3>Tytuł:</b> {{movie.title}}</h3>
     	<b>Gatunek:</b> {{movie.type}}<br/>
