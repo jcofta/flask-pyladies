@@ -1,0 +1,33 @@
+<!DOCTYPE html> 
+<html> 
+    <head> 
+        <meta charset="UTF-8"> 
+        <title>Movies: {{on_page}}</title> 
+    </head> 
+<body> 
+	<h1>Lista filmów</h1>
+    {% if movies_list %}
+        {% if prev %}
+            <a href='{{url_for('index', page=prev, on_page=on_page)}}'>Wstecz</a>
+        {% endif %}
+
+        {% if prev and next%}
+            <span> | </span>
+        {% endif %}     
+        
+        {% if next %}
+            <a href='{{url_for('index', page=next, on_page=on_page)}}'>Dalej</a>
+        {% endif %}
+    {% for movie in movies_list %}
+    	<h3>Tytuł:</b> {{movie.title}}</h3>
+    	<b>Gatunek:</b> {{movie.type}}<br/>
+    	<b>Rok produkcji:</b> {{movie.year_created}}<br/>
+    	<b>Reżyseria:</b> {{movie.direction}}<br/>
+    	<p><a href='{{url_for('movie', id=movie.id)}}'>More...</a></p>
+    	<br>
+    {% endfor %}
+    {% else %}
+        <p>Brak filmów do wyświetlenia</p>
+    {% endif %}
+</body> 
+</html>

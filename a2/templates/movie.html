@@ -1,0 +1,36 @@
+<!DOCTYPE html> 
+<html> 
+    <head> 
+        <meta charset="UTF-8"> 
+        <title>Title of the document</title> 
+    </head> 
+<body> 
+    {%if movie %}
+        <h1>Tytuł:</b> {{movie.title}}</h1>
+        <b>Gatunek:</b> {{movie.type}}<br/>
+        <b>Rok produkcji:</b> {{movie.year_created}}<br/>
+        <b>Reżyseria:</b> {{movie.direction}}<br/>
+        <h3>Oceny:</h3>
+        {% if movie.ratings %}
+            {% for rate in movie.ratings %}
+                <p><b>@{{rate.username}}</b> {{rate.rating}} </p>
+            {% endfor %}
+        {% else %}
+            <p>Jeszcze nikt nie ocenił tego filmu.</p>
+        {% endif %}
+        <h3>Komentarze:</h3>
+        {% if movie.comments %}
+            {% for comment in movie.comments %}
+                <p><b>@{{comment.username}}</b> {{comment.content}} </p>
+            {% endfor %}
+        {% else %}
+            <p>Jeszcze nikt nie skomentował tego filmu.</p>
+        {% endif %}
+
+    {% else %}
+        <p>Nie ma takiego filmu w bazie</p>
+    {%endif%}
+    <p><a href='{{url_for('index')}}'>Back</a></p>
+    <br>
+</body> 
+</html>
