@@ -1,0 +1,20 @@
+<!DOCTYPE html> 
+<html> 
+    <head> 
+        <meta charset="UTF-8"> 
+            <title>Adding new movie</title> 
+    </head> 
+<body> 
+    <h1>Wypełnij formularz</h1>
+    <form action="{{url_for('add_movie')}}" method='post'> 
+        <p>Tytuł<input type="text" name="title" > </p>
+        <p>Reżyseria<input type="text" name="direction"></p>
+        <p>Gatunek<input type="text" name="type"></p>
+        <p>Rok produkcji<input type="text" name="year_created"></p>
+        <input type="submit" value="Submit">
+    </form>
+
+    <p><a href='{{url_for('index')}}'>Back</a></p>
+    <br>
+</body> 
+</html>
