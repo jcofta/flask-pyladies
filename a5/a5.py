@@ -41,5 +41,11 @@ def logout():
 	session.pop('username',None)
 	return redirect(url_for('index'))
 
+@app.route("/info")
+def info():
+	if 'username' in session:
+		return render_template('info.html')
+	return redirect(url_for('login'))
+
 if __name__ == "__main__":
     app.run(debug=True, use_reloader=True, port=5000)
