@@ -2,44 +2,16 @@
 <html> 
     <head> 
         <meta charset="UTF-8"> 
-        <title>List of movies</title> 
+        <title>Index</title> 
     </head> 
-<body> 
-	<h1>Lista filmów</h1>
-    {% with messages = get_flashed_messages() %}
-    {% for message in messages %}
-      <li>{{ message }}</li>
-    {% endfor %}
-    {% endwith %}
-    <a href='{{url_for('add_movie')}}'>Dodaj nowy film</a>
-    {% if movies_list %}
-        <p>Przejdź do..</p>
-        {% if paginator.prev %}
-            <a href='{{url_for('index', page=paginator.first, on_page=on_page)}}'>Pierwsza</a>
-            <span> | </span>
-            <a href='{{url_for('index', page=paginator.prev, on_page=on_page)}}'>Poprzednia</a>
-        {% endif %}
-
-        {% if paginator.prev and paginator.next%}
-            <span> | </span>
-        {% endif %}     
-        
-        {% if paginator.next %}
-            <a href='{{url_for('index', page=paginator.next, on_page=on_page)}}'>Następna</a>
-            <span> | </span>
-            <a href='{{url_for('index', page=paginator.last, on_page=on_page)}}'>Ostatnia</a>
-        {% endif %}
-
-    {% for movie in movies_list %}
-    	<h3>Tytuł:</b> {{movie.title}}</h3>
-    	<b>Gatunek:</b> {{movie.type}}<br/>
-    	<b>Rok produkcji:</b> {{movie.year_created}}<br/>
-    	<b>Reżyseria:</b> {{movie.direction}}<br/>
-    	<p><a href='{{url_for('movie', id=movie.id)}}'>More...</a></p>
-    	<br>
-    {% endfor %}
+<body>
+    {% if username %}
+        <p>You are logged in as {{username}}</p>
+        <a href='{{url_for('logout')}}'>Wyloguj</a>
     {% else %}
-        <p>Brak filmów do wyświetlenia</p>
+        <p>You are not logged in</p>
+        <a href='{{url_for('login')}}'>Zaloguj</a>
     {% endif %}
+	
 </body> 
 </html>

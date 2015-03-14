@@ -1,0 +1,23 @@
+<!DOCTYPE html> 
+<html> 
+    <head> 
+        <meta charset="UTF-8"> 
+            <title>Logging</title> 
+    </head> 
+<body> 
+    <h1>Zaloguj się</h1>
+    {% with messages = get_flashed_messages() %}
+    {% for message in messages %}
+      <li>{{ message }}</li>
+    {% endfor %}
+    {% endwith %}
+    <form action="{{url_for('login')}}" method='post'> 
+        <p>Login<input type="text" name="username" > </p>
+        <p>Hasło<input type="text" name="password"></p>
+        <input type="submit" value="Submit">
+    </form>
+
+    <p><a href='{{url_for('index')}}'>Back</a></p>
+    <br>
+</body> 
+</html>
