@@ -3,7 +3,7 @@
 This is my solutions to PyTrening 3.0 tasks (by PyLadies).
 Event: https://www.facebook.com/events/1569769579941511
 
-Tasks available here https://www.dropbox.com/sh/3y1vnamedjn3is9/AAAzD1JUuyYIN1tUNsaBqb4Da?dl=0
+Tasks available here https://www.dropbox.com/s/ihowoek3xj5j2s7/startbootstrap-freelancer-1.0.2.zip?dl=0
 
 and "database" for first 4 tasks:
 
